@@ -28,18 +28,12 @@ infix 3 _⊆_
 _∈_ : {k ℓ : Level} {A : Set ℓ} → A → ℙ k A → Set k
 x ∈ S = S x
 
-data 𝟘 {ℓ : Level} : Set ℓ where
-
 -- The empty subset
-empty : {ℓ k : Level} (A : Set ℓ) → ℙ k A
-empty _ _ = 𝟘
-
-data 𝟙 {ℓ : Level} : Set ℓ where
-  𝟙-intro : 𝟙
+data empty {ℓ k : Level} (A : Set ℓ) (x : A) : Set k where
 
 -- The full subset
-full : {ℓ k : Level} (A : Set ℓ) → ℙ k A
-full _ _ = 𝟙
+data full {ℓ k : Level} (A : Set ℓ) (x : A) : Set k where
+  full-intro : full A x
 
 -- Subset relation
 _⊆_ : {ℓ k m : Level} {A : Set ℓ} → ℙ k A → ℙ m A → Set (ℓ ⊔ k ⊔ m)
